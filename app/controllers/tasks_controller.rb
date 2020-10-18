@@ -20,9 +20,7 @@ class TasksController < ApplicationController
     if @task.save
       flash[:success] = 'Task が正常に追加されました'
       redirect_to root_url
-      
     else
-      @task = current_user.tasks.order(id: :desc).page(params[:page])
       flash.now[:danger] = 'Task が追加されませんでした'
       render :new
     end
